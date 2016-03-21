@@ -473,6 +473,7 @@
     <Compile Include="Simplify\VWSimplifier.cs" />
     <Compile Include="Triangulate\ConformingDelaunayTriangulationBuilder.cs" />
     <Compile Include="Triangulate\ConformingDelaunayTriangulator.cs" />
+    <Compile Include="Triangulate\ConstrainedDelaunayTriangulator.cs" />
     <Compile Include="Triangulate\ConstraintEnforcementException.cs" />
     <Compile Include="Triangulate\IConstraintSplitPointFinder.cs" />
     <Compile Include="Triangulate\ConstraintVertex.cs" />
