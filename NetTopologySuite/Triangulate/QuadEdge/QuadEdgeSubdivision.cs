@@ -320,6 +320,26 @@ namespace NetTopologySuite.Triangulate.QuadEdge
         }
 
         /// <summary>
+        /// Find a triangle containing a location specified
+        /// by a <see cref="Coordinate"/>, if one exists.
+        /// </summary>
+        /// <param name="p">the Coordinate to locate</param>
+        /// <returns>a polygon containing the triangle that contains the location or null if no
+        /// such triangle exists</returns>
+        public IGeometry LocateTriangle(Coordinate p, IGeometryFactory geomFact)
+        {
+            QuadEdge edge = Locate(p);
+
+            if (edge == null)
+                return null;
+
+            if (new Vertex(p).RightOf(edge))
+                return geomFact.CreatePolygon(new Coordinate[] { edge.Orig.Coordinate, edge.Dest.Coordinate, edge.RPrev.Dest.Coordinate, edge.Orig.Coordinate });
+            else
+                return geomFact.CreatePolygon(new Coordinate[] { edge.Orig.Coordinate, edge.Dest.Coordinate, edge.LNext.Dest.Coordinate, edge.Orig.Coordinate });
+        }
+
+        /// <summary>
         /// Locates the edge between the given vertices, if it exists in the
         /// subdivision.
         /// </summary>
