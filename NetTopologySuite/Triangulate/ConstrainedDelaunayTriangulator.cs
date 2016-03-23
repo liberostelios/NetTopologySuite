@@ -328,6 +328,9 @@ namespace NetTopologySuite.Triangulate
         /// <param name="newSegment">the new Segment to be added</param>
         public bool AddSegment(Segment newSegment)
         {
+            if (newSegment.Start.Equals2D(newSegment.End))
+                return true;
+
             InsertSite(newSegment.Start);
             InsertSite(newSegment.End);
 
